@@ -9,8 +9,17 @@ describe('Roman Numeral Generator', () => {
     generator = new RomanNumeralGenerator();
   });
 
+  it('should not accept numbers below 1 or above 3999', () => {
+    assert.strictEqual(generator.generate(-3), null)
+    assert.strictEqual(generator.generate(4003), null)
+  });
+
   it('should return 1 as I', () => {
     assert.strictEqual(generator.generate(1), 'I')
+  });
+
+  it('should return 3 as III', () => {
+    assert.strictEqual(generator.generate(3), 'III')
   });
 
   it('should return 5 as V', () => {
@@ -19,6 +28,10 @@ describe('Roman Numeral Generator', () => {
 
   it('should return 10 as X', () => {
     assert.strictEqual(generator.generate(10), 'X')
+  });
+
+  it('should return 20 as XX', () => {
+    assert.strictEqual(generator.generate(20), 'XX')
   });
 
   it('should return 50 as L', () => {
@@ -37,8 +50,7 @@ describe('Roman Numeral Generator', () => {
     assert.strictEqual(generator.generate(1000), 'M')
   });
 
-  it('should not accept numbers below 1 or above 3999', () => {
-    assert.strictEqual(generator.generate(-3), null)
-    assert.strictEqual(generator.generate(4003), null)
+  it('should return 2000 as MM', () => {
+    assert.strictEqual(generator.generate(2000), 'MM')
   });
 })
