@@ -1,6 +1,6 @@
 class RomanNumeralGenerator {
   constructor() {
-    this.symbolsFull = {
+    this.symbolsList = {
       1: 'I',
       5: 'V',
       10: 'X',
@@ -9,43 +9,64 @@ class RomanNumeralGenerator {
       500: 'D',
       1000: 'M'
     }
-    this.symbolValues = Object.keys(this.symbolsFull).reverse();
-    this.symbols = Object.values(this.symbolsFull).reverse();
   }
 
   generate(number) {
     if (number < 1 || number > 3999) return null;
-    if (this.symbolsFull[number]) return this.symbolsFull[number];
+    if (this.symbolsList[number]) return this.symbolsList[number];
 
-    let result = '';
+    let singleDigits = number % 10
+    number -= singleDigits
+
+    let tens = number % 100
+    number -= tens
+
+    let hundreds = number % 1000
+    number -= hundreds
+
+    let thousands = number
+
+    let result = this.generateIndividualSymbol(thousands)
+    result += this.generateIndividualSymbol(hundreds)
+    result += this.generateIndividualSymbol(tens)
+    result += this.generateIndividualSymbol(singleDigits)
+
+    return result;
+
+  }
+
+  generateIndividualSymbol(number) {
+    const values = [1000, 500, 100, 50, 10, 5, 1]
+    const symbols = ['M', 'D', 'C', 'L', 'X', 'V', 'I']
+    let symbol = '';
 
     while (number !== 0) {
 
-      for (let i = 0; i < this.symbols.length; i++) {
-        let value = this.symbolValues[i];
-        let symbol = this.symbols[i];
+      let counter = 0;
 
+      for (let value of values) {
         if (number >= value) {
-          result += symbol;
-          number -= value;
-          break;
-        } else if (number < value && number >= (value - this.symbolValues[i+1])) {
-
-          if(number >= (value - this.symbolValues[i+2])) {
-            result += (this.symbols[i+2] + symbol)
-            number -= (value - this.symbolValues[i+2]);
-            break;
-          }
-          result += (this.symbols[i+1] + symbol)
-          number -= (value - this.symbolValues[i+1]);
-          break;
-
+          symbol += symbols[counter]
+          number -= value
+          counter = 0;
+          break
+        } else if (number === (value - values[counter+2])) {
+          symbol += (symbols[counter+2] + symbols[counter])
+          number -= (value - values[counter+2])
+          counter = 0;
+          break
+        } else if (number === (value - values[counter+1])) {
+          symbol += (symbols[counter+1] + symbols[counter])
+          number -= (value - values[counter+1])
+          counter = 0;
+          break
         }
+        counter++
       }
-      continue;
     }
-    return result;
+    return symbol;
+
   }
 }
 
-module.exports = RomanNumeralGenerator;
+  module.exports = RomanNumeralGenerator;
