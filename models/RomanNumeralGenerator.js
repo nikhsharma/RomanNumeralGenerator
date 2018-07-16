@@ -1,7 +1,6 @@
 class RomanNumeralGenerator {
-
-  generate(number) {
-    const symbols = {
+  constructor() {
+    this.symbols = {
       1: 'I',
       5: 'V',
       10: 'X',
@@ -10,8 +9,11 @@ class RomanNumeralGenerator {
       500: 'D',
       1000: 'M'
     }
+  }
 
-    if (symbols[number]) return symbols[number];
+  generate(number) {
+
+    if (this.symbols[number]) return this.symbols[number];
 
   }
 }
