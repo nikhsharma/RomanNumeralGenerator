@@ -12,7 +12,7 @@ class RomanNumeralGenerator {
   }
 
   generate(number) {
-
+    if (number < 1 || number > 3999) return null;
     if (this.symbols[number]) return this.symbols[number];
 
   }
