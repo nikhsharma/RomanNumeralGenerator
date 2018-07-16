@@ -15,16 +15,16 @@ class RomanNumeralGenerator {
     if (number < 1 || number > 3999) return null;
     if (this.symbolsList[number]) return this.symbolsList[number];
 
-    let singleDigits = number % 10
+    const singleDigits = number % 10
     number -= singleDigits
 
-    let tens = number % 100
+    const tens = number % 100
     number -= tens
 
-    let hundreds = number % 1000
+    const hundreds = number % 1000
     number -= hundreds
 
-    let thousands = number
+    const thousands = number
 
     let result = this.generateIndividualSymbol(thousands)
     result += this.generateIndividualSymbol(hundreds)
