@@ -41,6 +41,7 @@ class RomanNumeralGenerator {
 
   generateIndividualSymbol(number) {
 
+    // If number is in the symbol list, return it's symbol
     if (this.symbolsList[number]) return this.symbolsList[number]
 
     // Create seperate arrays for the symbols and their values in descending order
