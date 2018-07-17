@@ -40,6 +40,9 @@ class RomanNumeralGenerator {
 
 
   generateIndividualSymbol(number) {
+
+    if (this.symbolsList[number]) return this.symbolsList[number]
+
     // Create seperate arrays for the symbols and their values in descending order
     const symbols = Object.values(this.symbolsList).reverse();
     const values = Object.keys(this.symbolsList).reverse();

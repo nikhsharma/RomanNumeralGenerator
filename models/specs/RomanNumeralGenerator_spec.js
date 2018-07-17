@@ -59,6 +59,10 @@ describe('Roman Numeral Generator', () => {
     assert.strictEqual(generator.generate(50), 'L')
   });
 
+  it('should return 54 as LIV', () => {
+    assert.strictEqual(generator.generate(54), 'LIV')
+  });
+
   it('should return 99 as XCIX', () => {
     assert.strictEqual(generator.generate(99), 'XCIX')
   });
