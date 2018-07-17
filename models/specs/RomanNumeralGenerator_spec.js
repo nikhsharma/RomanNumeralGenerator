@@ -71,6 +71,14 @@ describe('Roman Numeral Generator', () => {
     assert.strictEqual(generator.generate(100), 'C')
   });
 
+  it('should return 126 as CXXVI', () => {
+    assert.strictEqual(generator.generate(126), 'CXXVI')
+  });
+
+  it('should return 361 as CCCLXI', () => {
+    assert.strictEqual(generator.generate(361), 'CCCLXI')
+  });
+
   it('should return 500 as D', () => {
     assert.strictEqual(generator.generate(500), 'D')
   });
@@ -83,12 +91,20 @@ describe('Roman Numeral Generator', () => {
     assert.strictEqual(generator.generate(1000), 'M')
   });
 
+  it('should return 1472 as MCDLXXII', () => {
+    assert.strictEqual(generator.generate(1472), 'MCDLXXII')
+  });
+
   it('should return 2000 as MM', () => {
     assert.strictEqual(generator.generate(2000), 'MM')
   });
 
   it('should return 2163 as MMCLXIII', () => {
     assert.strictEqual(generator.generate(2163), 'MMCLXIII')
+  });
+
+  it('should return 2897 as MMDCCCXCVII', () => {
+    assert.strictEqual(generator.generate(2897), 'MMDCCCXCVII')
   });
 
   it('should return 3428 as MMMCDXXVIII', () => {
