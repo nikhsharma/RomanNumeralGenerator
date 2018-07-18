@@ -17,7 +17,7 @@ Example:
 const RomanNumeralGenerator = require('./*file path to RomanNumeralGenerator.js*');
 const romanNumeralGenerator = new RomanNumeralGenerator();
 
-console.log(romanNumeralGenerator.generate(500));
+console.log(romanNumeralGenerator.generate(1234));
 ```
 Output:
 ```
